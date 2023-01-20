@@ -20,7 +20,7 @@ const CreatePost = () => {
     if (form.prompt) {
       try {
         setGeneratingImg(true);
-        const response = await fetch(`${process.env.BACKEND_URL}/api/v1/dalle/generate`, {
+        const response = await fetch('https://dalle-backend-laqi.onrender.com/api/v1/dalle/generate', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ const CreatePost = () => {
     if (form.prompt && form.photo && form.name) {
       setLoading(true);
       try {
-        const response = await fetch(`${process.env.BACKEND_URL}/api/v1/posts`, {
+        const response = await fetch('https://dalle-backend-laqi.onrender.com/api/v1/posts', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
