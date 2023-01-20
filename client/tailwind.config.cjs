@@ -19,9 +19,9 @@ module.exports = {
         cardhover: '0 0 1px 0 rgba(189,192,207,0.06),0 10px 16px -1px rgba(189,192,207,0.4)',
       },
       animation: {
-        slideup: 'slideup 1s ease-in-out',
-        slidedown: 'slidedown 1s ease-in-out',
-        slideleft: 'slideleft 1s ease-in-out',
+        slideup: 'slideup .6s ease-in-out',
+        slidedown: 'slidedown .6s ease-in-out',
+        slideleft: 'slideleft .6s ease-in-out',
         slideright: 'slideright 1s ease-in-out',
         wave: 'wave 1.2s linear infinite',
         slowfade: 'slowfade .5s ease-in-out',
@@ -40,7 +40,7 @@ module.exports = {
           to: { opacity: 1, transform: 'none' },
         },
         slideleft: {
-          from: { opacity: 0, transform: 'translateX(-20px)' },
+          from: { opacity: 0, transform: 'translateX(-5px)' },
           to: { opacity: 1, transform: 'translateX(0)' },
         },
         slideright: {
