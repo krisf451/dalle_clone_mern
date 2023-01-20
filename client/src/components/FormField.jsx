@@ -1,7 +1,5 @@
-import React from "react";
+import React from 'react';
 
-const FormField = () => {
-  return <div>FormField</div>;
-};
+const FormField = () => <div>FormField</div>;
 
 export default FormField;
