@@ -21,6 +21,8 @@ const CreatePost = () => {
 
   const handleChange = (e) => {};
 
+  const handleSurpriseMe = () => {};
+
   return (
     <section className="max-w-7xl mx-auto">
       <div>
@@ -39,12 +41,14 @@ const CreatePost = () => {
             handleChange={handleChange}
           />
           <FormField
-            labelName="Promp"
+            labelName="Prompt"
             type="text"
             name="prompt"
             placeholder="a stained glass window depicting a hamburger and french fries"
             value={form.prompt}
             handleChange={handleChange}
+            isSurpriseMe
+            handleSurpriseMe={handleSurpriseMe}
           />
         </div>
       </form>
