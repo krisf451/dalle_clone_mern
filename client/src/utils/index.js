@@ -12,7 +12,7 @@ export function getRandomPrompt(prompt) {
 }
 
 export async function downloadImage(_id, photo) {
-  const response = await fetch(photo);
+  const response = await fetch(photo.replace('http:', 'https:'));
   const blob = await response.blob();
   FileSaver.saveAs(blob, `image-${_id}.jpg`);
 }
