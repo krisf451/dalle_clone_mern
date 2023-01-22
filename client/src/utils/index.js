@@ -3,17 +3,44 @@ import jwtDecode from 'jwt-decode';
 
 import { surpriseMePrompts } from '../constants';
 
-export async function createOrGetUser(response) {
+export async function createOrGetUser(response, addUser) {
   const decodedToken = jwtDecode(response.credential);
-  console.log(decodedToken);
-  const { name, picture, sub } = decodedToken;
-  const user = {
-    user_id: sub,
-    full_name: name,
-    image: picture,
-  };
+  const { name, picture, sub, email } = decodedToken;
+  try {
+    // check if user exists
+    const userResponse = await fetch(`${import.meta.env.VITE_BACKEND_URL}/auth/users/${sub}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const userData = await userResponse.json();
+    if (userData.success) {
+      addUser(userData.data);
+      return userData;
+    }
 
-  // get user
+    const user = {
+      user_id: sub,
+      email,
+      full_name: name,
+      imageUrl: picture,
+    };
+    console.log('new user');
+    const newUserResponse = await fetch(`${import.meta.env.VITE_BACKEND_URL}/auth`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(user),
+    });
+    const newUserData = await newUserResponse.json();
+    addUser(userData.data);
+    return newUserData;
+  } catch (err) {
+    console.log('Error Getting Or Creating User', err);
+    alert(err);
+  }
 }
 
 export function getRandomPrompt(prompt) {
