@@ -15,8 +15,6 @@ const Home = () => {
   const [searchedResults, setSearchedResults] = useState(null);
   const [searchTimeout, setSearchTimeout] = useState(null);
 
-  console.log(import.meta.env.VITE_BACKEND_URL, 'TESTING');
-
   useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true);
